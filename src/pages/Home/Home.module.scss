@@ -1,0 +1,28 @@
+.root {
+    background-color: #E6E9F2;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+
+    .root {
+        padding: 25px 10px;
+    }
+}
+
+.loading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

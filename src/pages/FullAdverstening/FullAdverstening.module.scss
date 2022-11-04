@@ -1,0 +1,279 @@
+.root {
+    padding: 30px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+
+    .root {
+        padding: 25px 10px;
+    }
+}
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    width: 70%;
+}
+
+.media {
+    width: 30%;
+}
+
+.header {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgb(182, 182, 182);
+}
+
+.actions {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.5625px;
+    color: #3A4562;
+    font-stretch: 100;
+}
+
+.favorite {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+        margin-right: 5px;
+    }
+}
+
+.shape {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+        margin-right: 5px;
+    }
+}
+
+.subtitle {
+    display: flex;
+    justify-content: start;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.413333px;
+    color: #3A4562;
+    margin-bottom: 20px;
+
+    text-align: left !important;
+
+
+}
+
+.aplly {
+    margin: 40px 0 30px 0;
+}
+
+#apllyTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    p {
+        margin-right: 5px;
+    }
+
+}
+
+.subheader {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    width: 60%;
+}
+
+.list {
+    padding-inline-start: 20px;
+    list-style-type: square;
+}
+
+.btns {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0 40px 0;
+
+    button {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.image {
+    margin: 20px 0 50px 0;
+
+    img {
+        width: 200px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 10px;
+    }
+}
+
+.loading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+
+    .root {
+        padding: 25px 10px;
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-areas:
+            "main" auto
+            "media" auto;
+    }
+
+    .main {
+        width: 100%;
+        grid-area: main;
+    }
+
+    .media {
+        display: none;
+        width: 100%;
+        grid-area: media;
+    }
+
+    .header {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        border: none;
+    }
+
+    .actions {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 23px;
+        letter-spacing: -0.5625px;
+        color: #3A4562;
+        font-stretch: 100;
+    }
+
+    .favorite {
+        margin-right: 20px;
+    }
+
+    .subtitle {
+        display: flex;
+        justify-content: start;
+        width: 100%;
+        border-bottom: 2px solid rgb(182, 182, 182);
+        padding-bottom: 10px;
+
+
+    }
+
+    #apllyTop {
+        margin: 20px 0 0 0;
+
+        button {
+            display: none;
+        }
+
+        .rating {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+        }
+    }
+
+    .subheader {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .title {
+        width: 100%;
+    }
+
+    .salary {
+        margin-top: 10px;
+    }
+
+    .list {
+        padding-inline-start: 20px;
+        list-style-type: square;
+    }
+
+    .btns {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px 0 40px 0;
+
+        button {
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .image {
+        margin: 20px 0 30px 0;
+
+        img {
+            width: 140px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+    }
+}

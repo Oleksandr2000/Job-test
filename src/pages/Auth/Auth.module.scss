@@ -1,0 +1,22 @@
+.root {
+    background-color: rgba(161, 177, 219, 0.317343);
+
+    min-height: 100vh;
+}
+
+.wrapper {
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        height: 100%;
+        width: 90%;
+    }
+}

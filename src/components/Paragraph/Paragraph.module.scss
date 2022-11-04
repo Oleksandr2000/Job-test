@@ -1,0 +1,63 @@
+.paragraph {
+    display: block;
+
+    margin: 0;
+    padding: 0;
+}
+
+.large {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: -0.625px;
+    color: #3A4562;
+
+    @media (max-width: 768px) {
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
+.medium {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.5625px;
+    color: #3A4562;
+    font-stretch: 100;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+.small {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.23619px;
+    color: #878D9D;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+.additional {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.23619px;
+    color: #878D9D;
+
+    @media (max-width: 768px) {
+        font-size: 10px;
+        line-height: 16px;
+    }
+}
