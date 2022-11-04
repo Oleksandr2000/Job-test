@@ -1,3 +1,1 @@
-export interface FullAdversteningProps {
-    
-}
+export interface FullAdversteningProps {}

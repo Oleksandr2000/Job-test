@@ -1,68 +1,69 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks";
-import { logout } from "../../redux/slice/UserSlice/UserSlice";
-import { authMenuRoutes, menuRoutes, Route } from "../../routes";
-import { FAVORITE_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "../../utils/constants";
-import Button from "../Button/Button";
+import React from "react"
+import { Link } from "react-router-dom"
 
-import styles from "./Header.module.scss";
-import { HeaderProps } from "./Header.props";
+import styles from "./Header.module.scss"
 
-const Header = () => {
-	const isAuth = useAppSelector(store => store.user.token);
+import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks"
+import { logout } from "../../redux/slice/UserSlice/UserSlice"
+import { authMenuRoutes, menuRoutes, Route } from "../../routes"
+import { HOME_ROUTE } from "../../utils/constants"
+import Button from "../Button/Button"
 
-	const dispatch = useAppDispatch();
+function Header() {
+  const isAuth = useAppSelector((store) => store.user.token)
 
-	return (
-		<header className={styles.root}>
-			<div className={styles.container}>
-				<div className={styles.routes}>
-					<div className={styles.routes}>
-						<div className={styles.home}>
-							<Link to={HOME_ROUTE}>
-								<Button color="light-blue" size="medium" variant="outline">
-									Home
-								</Button>
-							</Link>
-						</div>
-					</div>
-					<div className={styles.flex}>
-						{!isAuth &&
-							menuRoutes.slice(1, menuRoutes.length).map((route: Route, i: number) => (
-								<div key={i}>
-									<Link to={route.path}>
-										<Button color="light-blue" size="medium" variant="outline">
-											{route.name}
-										</Button>
-									</Link>
-								</div>
-							))}
-						{isAuth &&
-							authMenuRoutes.slice(1, menuRoutes.length).map((route: Route, i: number) => (
-								<div key={i}>
-									<Link to={route.path}>
-										<Button color="light-blue" size="medium" variant="outline">
-											{route.name}
-										</Button>
-									</Link>
-								</div>
-							))}
-						{isAuth && (
-							<Button
-								variant="fill"
-								color="exit"
-								size="medium"
-								style={{ marginLeft: "10px" }}
-								onClick={() => dispatch(logout())}>
-								Exit
-							</Button>
-						)}
-					</div>
-				</div>
-			</div>
-		</header>
-	);
-};
+  const dispatch = useAppDispatch()
 
-export default Header;
+  return (
+    <header className={styles.root}>
+      <div className={styles.container}>
+        <div className={styles.routes}>
+          <div className={styles.routes}>
+            <div className={styles.home}>
+              <Link to={HOME_ROUTE}>
+                <Button color='light-blue' size='medium' variant='outline'>
+                  Home
+                </Button>
+              </Link>
+            </div>
+          </div>
+          <div className={styles.flex}>
+            {!isAuth &&
+              menuRoutes.slice(1, menuRoutes.length).map((route: Route, i: number) => (
+                <div key={i}>
+                  <Link to={route.path}>
+                    <Button color='light-blue' size='medium' variant='outline'>
+                      {route.name}
+                    </Button>
+                  </Link>
+                </div>
+              ))}
+            {isAuth &&
+              authMenuRoutes.slice(1, menuRoutes.length).map((route: Route, i: number) => (
+                <div key={i}>
+                  <Link to={route.path}>
+                    <Button color='light-blue' size='medium' variant='outline'>
+                      {route.name}
+                    </Button>
+                  </Link>
+                </div>
+              ))}
+            {isAuth && (
+              <Button
+                variant='fill'
+                color='exit'
+                size='medium'
+                style={{ marginLeft: "10px" }}
+                onClick={() => dispatch(logout())}
+              >
+                Exit
+              </Button>
+            )}
+          </div>
+        </div>
+      </div>
+    </header>
+  )
+}
+
+export default Header

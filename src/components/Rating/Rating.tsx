@@ -1,78 +1,77 @@
-import React from "react";
-import { RaitingProps } from "./Rating.props";
-import styles from "./Rating.module.scss";
-import { ReactComponent as StarIcon } from "./star.svg";
-import cn from "classnames";
-import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks";
-import { store } from "../../redux";
-import { postRating } from "../../redux/slice/AdverstaningSlice/AdversteningSlice";
-import { toast } from "react-toastify";
+import cn from "classnames"
+import React from "react"
+import { toast } from "react-toastify"
 
-const Raiting = ({ rating, advertisement, ...props }: RaitingProps) => {
-	const [ratingArray, setRatingArray] = React.useState<JSX.Element[]>([...Array(5)].fill(<></>));
-	const [ratingValue, setRatingValue] = React.useState(rating);
+import styles from "./Rating.module.scss"
+import { RaitingProps } from "./Rating.props"
+import { ReactComponent as StarIcon } from "./star.svg"
 
-	const { user } = useAppSelector(store => store.user);
-	const newRating = useAppSelector(store => store.adverstaning.advertisement?.rating);
-	const isEditeble = useAppSelector(store => store.user.token);
+import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks"
+import { postRating } from "../../redux/slice/AdverstaningSlice/AdversteningSlice"
 
-	const dispatch = useAppDispatch();
+function Raiting({ rating, advertisement, ...props }: RaitingProps) {
+  const [ratingArray, setRatingArray] = React.useState<JSX.Element[]>([...Array(5)].fill(<></>))
+  const [ratingValue, setRatingValue] = React.useState(rating)
 
-	React.useEffect(() => {
-		uddatedRating(ratingValue);
-	}, []);
+  const { user } = useAppSelector((store) => store.user)
+  const newRating = useAppSelector((store) => store.adverstaning.advertisement?.rating)
+  const isEditeble = useAppSelector((store) => store.user.token)
 
-	React.useEffect(() => {
-		if (newRating) {
-			uddatedRating(newRating.value);
-		}
-	}, [newRating]);
+  const dispatch = useAppDispatch()
 
-	const uddatedRating = (current: number) => {
-		const updatedArray = ratingArray.map((rating: JSX.Element, i: number) => {
-			return (
-				<StarIcon
-					className={cn(styles.star, {
-						[styles.filled]: i < current,
-						[styles.editable]: isEditeble,
-					})}
-				/>
-			);
-		});
-		setRatingArray(updatedArray);
-	};
+  React.useEffect(() => {
+    uddatedRating(ratingValue)
+  }, [])
 
-	const confirmAuth = () => {
-		toast.error("Sign in to your account");
-	};
+  React.useEffect(() => {
+    if (newRating) {
+      uddatedRating(newRating.value)
+    }
+  }, [newRating])
 
-	const onClick = (rating: number) => {
-		if (!isEditeble) {
-			return;
-		}
+  const uddatedRating = (current: number) => {
+    const updatedArray = ratingArray.map((rating: JSX.Element, i: number) => (
+      <StarIcon
+        className={cn(styles.star, {
+          [styles.filled]: i < current,
+          [styles.editable]: isEditeble,
+        })}
+      />
+    ))
+    setRatingArray(updatedArray)
+  }
 
-		const body = {
-			value: rating,
-			user: user?._id,
-			advertisement: advertisement,
-		};
+  const confirmAuth = () => {
+    toast.error("Sign in to your account")
+  }
 
-		console.log(rating);
+  const onClick = (rating: number) => {
+    if (!isEditeble) {
+      return
+    }
 
-		if (body) {
-			dispatch(postRating(body));
-		}
-	};
+    const body = {
+      value: rating,
+      user: user?._id,
+      advertisement,
+    }
 
-	return (
-		<div {...props}>
-			{ratingArray.map((item: JSX.Element, i: number) => (
-				<span key={i} onClick={user ? () => onClick(i + 1) : confirmAuth}>
-					{item}
-				</span>
-			))}
-		</div>
-	);
-};
+    console.log(rating)
 
-export default Raiting;
+    if (body) {
+      dispatch(postRating(body))
+    }
+  }
+
+  return (
+    <div {...props}>
+      {ratingArray.map((item: JSX.Element, i: number) => (
+        <span key={i} onClick={user ? () => onClick(i + 1) : confirmAuth}>
+          {item}
+        </span>
+      ))}
+    </div>
+  )
+}
+
+export default Raiting

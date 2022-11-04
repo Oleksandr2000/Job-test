@@ -1,66 +1,68 @@
-import React from "react";
-import Advertisment from "../../components/Advertisment/Advertisment";
-import Pagination from "../../components/Pagination/Pagination";
-import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks";
-import AdveetismentLayout from "../../layouts/AdvertisementLayout/AdvertismentLayout";
-import { Adverstaning } from "../../redux/slice/AdverstaningSlice/AdverstaningSlice.props";
-import { getFavorites, setActiveFavoritePage } from "../../redux/slice/FavoriteSlice/FavoriteSlise";
+import React from "react"
 
-import styles from "./Favorite.module.scss";
+import styles from "./Favorite.module.scss"
 
-const Home = () => {
-	const { favorite, totalPage, count, activePage, pagesChunk } = useAppSelector(store => store.favorite);
-	const { user } = useAppSelector(store => store.user);
+import Advertisment from "../../components/Advertisment/Advertisment"
+import Pagination from "../../components/Pagination/Pagination"
+import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks"
+import AdveetismentLayout from "../../layouts/AdvertisementLayout/AdvertismentLayout"
+import { Adverstaning } from "../../redux/slice/AdverstaningSlice/AdverstaningSlice.props"
+import { getFavorites, setActiveFavoritePage } from "../../redux/slice/FavoriteSlice/FavoriteSlise"
 
-	const isLoading = useAppSelector(store => store.favorite.statusFavorite) === "loading";
+function Home() {
+  const { favorite, totalPage, count, activePage, pagesChunk } = useAppSelector((store) => store.favorite)
+  const { user } = useAppSelector((store) => store.user)
 
-	const dispatch = useAppDispatch();
+  const isLoading = useAppSelector((store) => store.favorite.statusFavorite) === "loading"
 
-	React.useEffect(() => {
-		dispatch(getFavorites({ id: user?._id, count, activePage }));
-	}, [activePage]);
+  const dispatch = useAppDispatch()
 
-	if (!user) {
-		return (
-			<h1
-				style={{
-					textAlign: "center",
-					marginTop: "100px",
-					color: "#383838",
-				}}>
-				Sign in your acount.
-			</h1>
-		);
-	}
+  React.useEffect(() => {
+    dispatch(getFavorites({ id: user?._id, count, activePage }))
+  }, [activePage])
 
-	if (isLoading) {
-		return (
-			<div className={styles.loading}>
-				<img src="/Fullpageloader.svg" alt="loading..." />
-			</div>
-		);
-	}
+  if (!user) {
+    return (
+      <h1
+        style={{
+          textAlign: "center",
+          marginTop: "100px",
+          color: "#383838",
+        }}
+      >
+        Sign in your acount.
+      </h1>
+    )
+  }
 
-	return (
-		<div className={styles.root}>
-			<div className={styles.container}>
-				<h1>Favorite</h1>
-				<AdveetismentLayout>
-					{favorite.map((obj: Adverstaning) => (
-						<Advertisment {...obj} key={obj._id} />
-					))}
-				</AdveetismentLayout>
-				{totalPage > 1 && (
-					<Pagination
-						totalPage={totalPage}
-						activePage={activePage}
-						pagesChunk={pagesChunk}
-						setActivePage={setActiveFavoritePage}
-					/>
-				)}
-			</div>
-		</div>
-	);
-};
+  if (isLoading) {
+    return (
+      <div className={styles.loading}>
+        <img src='/Fullpageloader.svg' alt='loading...' />
+      </div>
+    )
+  }
 
-export default Home;
+  return (
+    <div className={styles.root}>
+      <div className={styles.container}>
+        <h1>Favorite</h1>
+        <AdveetismentLayout>
+          {favorite.map((obj: Adverstaning) => (
+            <Advertisment {...obj} key={obj._id} />
+          ))}
+        </AdveetismentLayout>
+        {totalPage > 1 && (
+          <Pagination
+            totalPage={totalPage}
+            activePage={activePage}
+            pagesChunk={pagesChunk}
+            setActivePage={setActiveFavoritePage}
+          />
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default Home

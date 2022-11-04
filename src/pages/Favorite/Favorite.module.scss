@@ -1,28 +1,29 @@
 .root {
-    background-color: #E6E9F2;
-    min-height: 100vh;
-    padding: 30px;
+  min-height: 100vh;
+  padding: 30px;
+  background-color: #E6E9F2;
 }
 
 .container {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .loading {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
 }
 
 @media (max-width: 768px) {
-    .container {
-        width: 100%;
-    }
+  .container {
+    width: 100%;
+  }
 
-    .root {
-        padding: 25px 10px;
-    }
+  .root {
+    padding: 25px 10px;
+  }
 }

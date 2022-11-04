@@ -1,58 +1,65 @@
-import React from "react";
-import Advertisment from "../../components/Advertisment/Advertisment";
-import Pagination from "../../components/Pagination/Pagination";
-import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks";
-import AdveetismentLayout from "../../layouts/AdvertisementLayout/AdvertismentLayout";
-import { Adverstaning } from "../../redux/slice/AdverstaningSlice/AdverstaningSlice.props";
-import { fetchAdverstening, setActivePage } from "../../redux/slice/AdverstaningSlice/AdversteningSlice";
-import { getFavorites } from "../../redux/slice/FavoriteSlice/FavoriteSlise";
+import React from "react"
 
-import styles from "./Home.module.scss";
+import styles from "./Home.module.scss"
 
-const Home = () => {
-	const { data, activePage, count, totalPage, pagesChunk } = useAppSelector(store => store.adverstaning);
-	const favoriteActivePage = useAppSelector(store => store.favorite.activePage);
+import Advertisment from "../../components/Advertisment/Advertisment"
+import Pagination from "../../components/Pagination/Pagination"
+import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks"
+import AdveetismentLayout from "../../layouts/AdvertisementLayout/AdvertismentLayout"
+import { Adverstaning } from "../../redux/slice/AdverstaningSlice/AdverstaningSlice.props"
+import { fetchAdverstening, setActivePage } from "../../redux/slice/AdverstaningSlice/AdversteningSlice"
+import { getFavorites } from "../../redux/slice/FavoriteSlice/FavoriteSlise"
 
-	const { user } = useAppSelector(store => store.user);
+function Home() {
+  const { data, activePage, count, totalPage, pagesChunk } = useAppSelector((store) => store.adverstaning)
+  const favoriteActivePage = useAppSelector((store) => store.favorite.activePage)
 
-	const isLoading = useAppSelector(store => store.adverstaning.status) === "loading";
+  const { user } = useAppSelector((store) => store.user)
 
-	const dispatch = useAppDispatch();
+  const isLoading = useAppSelector((store) => store.adverstaning.status) === "loading"
 
-	React.useEffect(() => {
-		dispatch(fetchAdverstening({ count, activePage }));
-	}, [activePage]);
+  const dispatch = useAppDispatch()
 
-	React.useEffect(() => {
-		dispatch(getFavorites({ id: user?._id, count: 20, activePage: favoriteActivePage }));
-	}, [user]);
+  React.useEffect(() => {
+    dispatch(fetchAdverstening({ count, activePage }))
+  }, [activePage])
 
-	if (isLoading) {
-		return (
-			<div className={styles.loading}>
-				<img src="/Fullpageloader.svg" alt="loading..." />
-			</div>
-		);
-	}
+  React.useEffect(() => {
+    dispatch(
+      getFavorites({
+        id: user?._id,
+        count: 20,
+        activePage: favoriteActivePage,
+      }),
+    )
+  }, [user])
 
-	return (
-		<div className={styles.root}>
-			<div className={styles.container}>
-				<AdveetismentLayout>
-					{data.map((obj: Adverstaning) => (
-						<Advertisment {...obj} key={obj._id} />
-					))}
-				</AdveetismentLayout>
+  if (isLoading) {
+    return (
+      <div className={styles.loading}>
+        <img src='/Fullpageloader.svg' alt='loading...' />
+      </div>
+    )
+  }
 
-				<Pagination
-					totalPage={totalPage}
-					activePage={activePage}
-					pagesChunk={pagesChunk}
-					setActivePage={setActivePage}
-				/>
-			</div>
-		</div>
-	);
-};
+  return (
+    <div className={styles.root}>
+      <div className={styles.container}>
+        <AdveetismentLayout>
+          {data.map((obj: Adverstaning) => (
+            <Advertisment {...obj} key={obj._id} />
+          ))}
+        </AdveetismentLayout>
 
-export default Home;
+        <Pagination
+          totalPage={totalPage}
+          activePage={activePage}
+          pagesChunk={pagesChunk}
+          setActivePage={setActivePage}
+        />
+      </div>
+    </div>
+  )
+}
+
+export default Home

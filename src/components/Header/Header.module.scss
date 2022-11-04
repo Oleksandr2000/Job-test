@@ -1,44 +1,43 @@
 .root {
-    padding: 10px 30px;
-    background-color: #fff;
-    border-bottom: 2px solid #cacaca;
-    z-index: 10;
+  z-index: 10;
+  padding: 10px 30px;
+  background-color: #FFF;
+  border-bottom: 2px solid #CACACA;
 }
 
 .routes {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas:
-        "home .  flex";
-    column-gap: 10px;
+  display: grid;
+  grid-template-areas: "home .  flex";
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr;
+  column-gap: 10px;
 }
 
 .home {
-    grid-area: home;
+  grid-area: home;
 }
 
 .flex {
-    grid-area: flex;
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  grid-area: flex;
+  justify-content: space-between;
 
-    div {
-        margin-left: 10px;
-    }
+  div {
+    margin-left: 10px;
+  }
 }
 
 .container {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 768px) {
-    .container {
-        width: 100%;
-    }
+  .container {
+    width: 100%;
+  }
 
-    .root {
-        display: none;
-    }
+  .root {
+    display: none;
+  }
 }

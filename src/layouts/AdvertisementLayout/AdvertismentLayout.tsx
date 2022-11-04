@@ -1,10 +1,10 @@
-import React from "react";
-import { AdvertismentLayoutprops } from "./AdvertismentLayout.props";
+import React from "react"
 
-import styles from "./AdvertismentLayout.module.scss";
+import styles from "./AdvertismentLayout.module.scss"
+import { AdvertismentLayoutprops } from "./AdvertismentLayout.props"
 
-const AdveetismentLayout: React.FC<AdvertismentLayoutprops> = ({ children }) => {
-  return <div className={styles.root}>{children}</div>;
-};
+const AdveetismentLayout: React.FC<AdvertismentLayoutprops> = ({ children }) => (
+  <div className={styles.root}>{children}</div>
+)
 
-export default AdveetismentLayout;
+export default AdveetismentLayout

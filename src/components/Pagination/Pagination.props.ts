@@ -1,6 +1,6 @@
 export interface PaginationProps {
-    totalPage: number; 
-    activePage: number;
-    pagesChunk: number[];
-    setActivePage: (value: number) => any;
+  totalPage: number
+  activePage: number
+  pagesChunk: number[]
+  setActivePage: (value: number) => any
 }

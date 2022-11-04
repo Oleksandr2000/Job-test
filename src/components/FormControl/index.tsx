@@ -1,10 +1,10 @@
-import React from "react";
-import { FormControlProps } from "./FormControl.props";
-import cn from "classnames";
+import cn from "classnames"
+import React from "react"
 
-import styles from "./FormControl.module.scss";
+import styles from "./FormControl.module.scss"
+import { FormControlProps } from "./FormControl.props"
 
-const Input = ({
+function Input({
   placeholder,
   label,
   variant,
@@ -15,14 +15,15 @@ const Input = ({
   handlerVlue,
   touched,
   onBlur,
-}: FormControlProps) => {
+}: FormControlProps) {
   return (
     <div
       className={cn(styles.root, {
         [styles.large]: variant === "large",
         [styles.medium]: variant === "medium",
         [styles.small]: variant === "small",
-      })}>
+      })}
+    >
       <label className={styles.label}>{label}</label>
       <input
         placeholder={placeholder}
@@ -30,11 +31,11 @@ const Input = ({
         name={name}
         type={type}
         onBlur={onBlur}
-        onChange={e => handlerVlue(name, e.target.value)}
+        onChange={(e) => handlerVlue(name, e.target.value)}
       />
       {error && touched ? <div className={styles.error}>{error}</div> : null}
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

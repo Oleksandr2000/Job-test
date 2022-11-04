@@ -1,33 +1,33 @@
 body {
   margin: 0;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a{
+a {
+  color: #3a4562 !important;
   text-decoration: none !important;
-    color: #3A4562 !important;
 }
 
 .menu-enter {
-  max-height: 0px;
-  transition: all 0.8s ease;
   overflow: hidden;
- }
+  max-height: 0;
+  transition: all 0.8s ease;
+}
 
 .menu-enter-active {
   height: auto;
   max-height: 500px;
- }
+}
 
 .menu-exit {
   max-height: 500px;
-  transition: all 0.4s ease; 
+  transition: all 0.4s ease;
 }
 
 .menu-exit-active {
   overflow: hidden;
-  max-height: 0px;
- }
-
+  max-height: 0;
+}

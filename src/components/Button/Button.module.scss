@@ -1,96 +1,102 @@
 .button {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 
 .content {
-    border-radius: 8px;
-    padding: 8px 10px;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 14px;
-    text-align: center;
+  padding: 8px 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: center;
+
+  border-radius: 8px;
 }
 
 .medium {
-    width: 130px;
-    height: 40px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 16px;
-    text-align: center;
+  width: 130px;
+  height: 40px;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: center;
+
+  border-radius: 8px;
 }
 
 .large {
-    width: 220px;
-    height: 50px;
-    border-radius: 8px;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 16px;
-    letter-spacing: -0.457143px;
-    text-align: center;
+  width: 220px;
+  height: 50px;
 
-    @media screen and (max-width: 564px) {
-        width: 140px;
-    }
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: -0.457143px;
+
+  border-radius: 8px;
+
+  @media screen and (max-width: 564px) {
+    width: 140px;
+  }
 }
 
 .lightGold {
-    background: rgba(255, 207, 0, 0.15);
-    border: 2px solid #FFCF00;
-    color: #988B49;
+  color: #988B49;
+  background: rgb(255 207 0 / 15%);
+  border: 2px solid #FFCF00;
 }
 
 .lightBlue {
-    background: rgba(161, 177, 219, 0.317343);
-    border: 2px solid rgba(85, 105, 158, 0.3);
-    border-radius: 8px;
-    color: #55699E;
+  color: #55699E;
+  background: rgb(161 177 219 / 31.7%);
+  border: 2px solid rgb(85 105 158 / 30%);
+  border-radius: 8px;
 }
 
 .lightBlue:hover {
-    background: rgba(85, 105, 158, 0.3);
-    transition: 400ms all;
+  background: rgb(85 105 158 / 30%);
+  transition: 400ms all;
 }
 
 .darkBlue {
-    background: #384564;
-    border: 2px solid #384564;
-    color: #fff;
+  color: #FFF;
+  background: #384564;
+  border: 2px solid #384564;
 }
 
 .exit {
-    background-color: rgba(200, 35, 35, 0.5);
-    border: 2px solid rgba(200, 35, 35, 0.9);
-    color: #000;
+  color: #000;
+  background-color: rgb(200 35 35 / 50%);
+  border: 2px solid rgb(200 35 35 / 90%);
 }
 
 .exit:hover {
-    background-color: rgba(200, 35, 35, 0.9);
-    transition: 400ms all;
-
+  background-color: rgb(200 35 35 / 90%);
+  transition: 400ms all;
 }
 
 .text {
-    background: none !important;
-    border: none !important;
-    border-radius: 0;
-    color: rgb(100, 100, 100)
+  color: rgb(100 100 100);
+  background: none !important;
+  border: none !important;
+  border-radius: 0;
 }
 
 .textActive {
-    color: #5876C5;
-    background: none;
-    border: none;
-    border-bottom: 2.6px solid #5876C5;
-    border-radius: 0;
+  color: #5876C5;
+
+  background: none;
+  border: none;
+  border-bottom: 2.6px solid #5876C5;
+  border-radius: 0;
 }
 
 .widthContent {
-    width: 100%;
-    padding: 12px 30px;
+  width: 100%;
+  padding: 12px 30px;
 }
