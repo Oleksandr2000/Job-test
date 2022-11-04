@@ -11,7 +11,7 @@ export const postFavorite = createAsyncThunk<{status: number, message: string}, 
 
 export const getFavorites = createAsyncThunk<{items: Adverstaning[], amount: number}, {id: any, count: number, activePage: number}>
     ('favorite/getFavorites',async ({id, count, activePage}) => {
-    const {data} = await axios.get(`/favorite/?id=${id}&count=${count}&offset=${activePage - 1}`);
+    const {data} = await axios.get(`/favorite?id=${id}&count=${count}&offset=${activePage - 1}`);
     return data
 })
 
