@@ -3,27 +3,18 @@ import { Adverstaning, AdverstaningSliceProps }  from './AdverstaningSlice.props
 import axios from '../../../axios';
 import { toast } from 'react-toastify';
 
-export const fetchAdverstening = createAsyncThunk<{items: Adverstaning[], amount: number}, any>('adverstaning/fetchAdverstaning', async ({count, activePage}) => {
+export const fetchAdverstening = createAsyncThunk<{items: Adverstaning[], amount: number}, {count: number, activePage: number}>
+  ('adverstaning/fetchAdverstaning', async ({count, activePage}) => {
   const { data } = await axios.get(`/advertisements?count=${count}&offset=${activePage - 1}`);
   return data;
 });
 
-export const fetchOneAdverstening = createAsyncThunk<Adverstaning, string>('adverstaning/fetchOneAdverstaning', async (param) => {
-  const { data } = await axios.get(`/advertisements/${param}`);
+export const fetchOneAdverstening = createAsyncThunk<Adverstaning, {id: string}>('adverstaning/fetchOneAdverstaning', async ({id}) => {
+  const { data } = await axios.get(`/advertisements/${id}`);
   return data;
 });
 
-export const postFavorite = createAsyncThunk<unknown, {advertisement: string, user: string}>('favorite/postFavorite', async (body) => {
-  const {data} = await axios.post('/favorite/add', body);
-  return data
-})
-
-export const getFavorites = createAsyncThunk<Adverstaning[], unknown>('favorite/getFavorites', async (param) => {
-  const {data} = await axios.get(`/favorite/${param}`);
-  return data
-})
-
-export const postRating = createAsyncThunk<any, {value: number, user?: string, advertisement?: string}>('rating/postRating', async (body) => {
+export const postRating = createAsyncThunk<{data: Adverstaning, message: string}, {value: number, user?: string, advertisement?: string}>('rating/postRating', async (body) => {
   const {data} = await axios.post('ratings/add', body);
   return data
 })
@@ -38,8 +29,6 @@ const initialState: AdverstaningSliceProps = {
   activePage: 1,
   totalPage: 3,
   pagesChunk: [2, 3, 4],
-  favorite: [],
-  statusFavorite: 'loading',
   showModal: false,
 };
 
@@ -86,27 +75,6 @@ const adverstaningSlice = createSlice({
       })
       .addCase(fetchAdverstening.rejected, (state) => {
         state.status = 'error';
-      })
-      .addCase(postFavorite.pending, (state) => {
-        state.statusPost = 'loading';
-      })
-      .addCase(postFavorite.fulfilled, (state, action) => {
-        state.statusPost = 'loaded';
-      })
-      .addCase(postFavorite.rejected, (state) => {
-        state.statusPost = 'error';
-        toast.error('Try later');
-      })
-      .addCase(getFavorites.pending, (state) => {
-        state.statusFavorite = 'loading';
-      })
-      .addCase(getFavorites.fulfilled, (state, action) => {
-        state.statusFavorite = 'loaded';
-        state.favorite = action.payload;
-
-      })
-      .addCase(getFavorites.rejected, (state) => {
-        state.statusFavorite = 'error';
       })
       .addCase(fetchOneAdverstening.pending, (state) => {
         state.status = 'loading';

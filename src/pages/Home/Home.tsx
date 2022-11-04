@@ -4,12 +4,15 @@ import Pagination from "../../components/Pagination/Pagination";
 import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks";
 import AdveetismentLayout from "../../layouts/AdvertisementLayout/AdvertismentLayout";
 import { Adverstaning } from "../../redux/slice/AdverstaningSlice/AdverstaningSlice.props";
-import { fetchAdverstening, getFavorites } from "../../redux/slice/AdverstaningSlice/AdversteningSlice";
+import { fetchAdverstening, setActivePage } from "../../redux/slice/AdverstaningSlice/AdversteningSlice";
+import { getFavorites } from "../../redux/slice/FavoriteSlice/FavoriteSlise";
 
 import styles from "./Home.module.scss";
 
 const Home = () => {
-	const { data, activePage, count } = useAppSelector(store => store.adverstaning);
+	const { data, activePage, count, totalPage, pagesChunk } = useAppSelector(store => store.adverstaning);
+	const favoriteActivePage = useAppSelector(store => store.favorite.activePage);
+
 	const { user } = useAppSelector(store => store.user);
 
 	const isLoading = useAppSelector(store => store.adverstaning.status) === "loading";
@@ -21,7 +24,7 @@ const Home = () => {
 	}, [activePage]);
 
 	React.useEffect(() => {
-		dispatch(getFavorites(user?._id));
+		dispatch(getFavorites({ id: user?._id, count: 20, activePage: favoriteActivePage }));
 	}, [user]);
 
 	if (isLoading) {
@@ -41,7 +44,12 @@ const Home = () => {
 					))}
 				</AdveetismentLayout>
 
-				<Pagination />
+				<Pagination
+					totalPage={totalPage}
+					activePage={activePage}
+					pagesChunk={pagesChunk}
+					setActivePage={setActivePage}
+				/>
 			</div>
 		</div>
 	);

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks";
-import { getFavorites, postFavorite } from "../../redux/slice/AdverstaningSlice/AdversteningSlice";
 import { ADVERTISMENT_ROUTE } from "../../utils/constants";
 import Paragraph from "../Paragraph/Paragraph";
 import Raiting from "../Rating/Rating";
@@ -10,10 +9,11 @@ import { AdvertismentProps } from "./Advertisment.props";
 import { ReactComponent as BookmarkIcon } from "./Bookmark.svg";
 import { ReactComponent as FavoriteIcon } from "./Favorite.svg";
 import styles from "./Advertisment.module.scss";
+import { getFavorites, postFavorite } from "../../redux/slice/FavoriteSlice/FavoriteSlise";
 
 const Advertisment = ({ _id, title, name, createdAt, pictures, rating }: AdvertismentProps) => {
 	const { user } = useAppSelector(store => store.user);
-	const { favorite, statusPost } = useAppSelector(store => store.adverstaning);
+	const { favorite, count, activePage } = useAppSelector(store => store.favorite);
 
 	const dispatch = useAppDispatch();
 
@@ -25,7 +25,7 @@ const Advertisment = ({ _id, title, name, createdAt, pictures, rating }: Adverti
 
 		await dispatch(postFavorite(body));
 
-		await dispatch(getFavorites(user));
+		await dispatch(getFavorites({ id: user, count: 20, activePage }));
 	};
 
 	const confirmAuth = () => {

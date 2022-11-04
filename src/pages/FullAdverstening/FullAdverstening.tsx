@@ -8,12 +8,7 @@ import Paragraph from "../../components/Paragraph/Paragraph";
 import { Link, useParams } from "react-router-dom";
 import { HOME_ROUTE } from "../../utils/constants";
 import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks";
-import {
-	fetchOneAdverstening,
-	getFavorites,
-	handleModal,
-	postFavorite,
-} from "../../redux/slice/AdverstaningSlice/AdversteningSlice";
+import { fetchOneAdverstening, handleModal } from "../../redux/slice/AdverstaningSlice/AdversteningSlice";
 import Modal from "../../components/Modal/Modal";
 import ApplyLayout from "../../layouts/ApplyLayout/ApplyLayout";
 import { ApllyInitialValues, ApllyValidation } from "../../layouts/ApplyLayout/constants";
@@ -21,9 +16,11 @@ import { Contact } from "../../layouts/ApplyLayout/ApplyLayout.props";
 import { postContacts } from "../../redux/slice/UserSlice/UserSlice";
 import { toast } from "react-toastify";
 import Raiting from "../../components/Rating/Rating";
+import { getFavorites, postFavorite } from "../../redux/slice/FavoriteSlice/FavoriteSlise";
 
 const FullAdverstening = () => {
-	const { advertisement, status, showModal, favorite } = useAppSelector(store => store.adverstaning);
+	const { advertisement, status, showModal } = useAppSelector(store => store.adverstaning);
+	const { favorite, count, activePage } = useAppSelector(store => store.favorite);
 	const { user } = useAppSelector(store => store.user);
 
 	const dispatch = useAppDispatch();
@@ -32,7 +29,7 @@ const FullAdverstening = () => {
 
 	React.useEffect(() => {
 		if (id) {
-			dispatch(fetchOneAdverstening(id.substring(1)));
+			dispatch(fetchOneAdverstening({ id: id.substring(1) }));
 		}
 	}, []);
 
@@ -44,7 +41,7 @@ const FullAdverstening = () => {
 
 		await dispatch(postFavorite(body));
 
-		await dispatch(getFavorites(user));
+		await dispatch(getFavorites({ id: user, count: 20, activePage }));
 	};
 
 	const confirmAuth = () => {

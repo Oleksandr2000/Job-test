@@ -6,6 +6,7 @@ import cn from "classnames";
 import { useAppDispatch, useAppSelector } from "../../hooks/useContextHooks";
 import { store } from "../../redux";
 import { postRating } from "../../redux/slice/AdverstaningSlice/AdversteningSlice";
+import { toast } from "react-toastify";
 
 const Raiting = ({ rating, advertisement, ...props }: RaitingProps) => {
 	const [ratingArray, setRatingArray] = React.useState<JSX.Element[]>([...Array(5)].fill(<></>));
@@ -41,6 +42,10 @@ const Raiting = ({ rating, advertisement, ...props }: RaitingProps) => {
 		setRatingArray(updatedArray);
 	};
 
+	const confirmAuth = () => {
+		toast.error("Sign in to your account");
+	};
+
 	const onClick = (rating: number) => {
 		if (!isEditeble) {
 			return;
@@ -62,7 +67,7 @@ const Raiting = ({ rating, advertisement, ...props }: RaitingProps) => {
 	return (
 		<div {...props}>
 			{ratingArray.map((item: JSX.Element, i: number) => (
-				<span key={i} onClick={() => onClick(i + 1)}>
+				<span key={i} onClick={user ? () => onClick(i + 1) : confirmAuth}>
 					{item}
 				</span>
 			))}

@@ -7,8 +7,6 @@ export interface AdverstaningSliceProps {
     activePage: number;
     totalPage: number; 
     pagesChunk: number[];
-    favorite: Adverstaning[];
-    statusFavorite: 'loading' | 'loaded' | 'error';
     showModal: boolean
 }
 
