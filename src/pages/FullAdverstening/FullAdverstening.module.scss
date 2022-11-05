@@ -26,6 +26,7 @@
 }
 
 .media {
+  height: 300px;
   width: 30%;
 }
 
@@ -168,20 +169,17 @@
   }
 
   .wrapper {
-    display: grid;
-    grid-template-areas:
-      "main" auto
-      "media" auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 
   .main {
-    grid-area: main;
     width: 100%;
   }
 
   .media {
-    display: none;
-    grid-area: media;
+    height: 400px;
     width: 100%;
   }
 

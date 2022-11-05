@@ -7,6 +7,7 @@ import { ReactComponent as FavoriteIcon } from "./Favorite.svg"
 import styles from "./FullAdverstening.module.scss"
 
 import Button from "../../components/Button/Button"
+import GoogleMap from "../../components/Map/Map"
 import Modal from "../../components/Modal/Modal"
 import Paragraph from "../../components/Paragraph/Paragraph"
 import Raiting from "../../components/Rating/Rating"
@@ -202,7 +203,9 @@ function FullAdverstening() {
                 </Button>
               </Link>
             </div>
-            <div className={styles.media} />
+            <div className={styles.media}>
+              <GoogleMap lat={advertisement?.location.lat} lng={advertisement?.location.long} />
+            </div>
           </div>
         </div>
       </div>
