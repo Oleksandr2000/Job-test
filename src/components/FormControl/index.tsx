@@ -24,7 +24,9 @@ function Input({
         [styles.small]: variant === "small",
       })}
     >
-      <label className={styles.label}>{label}</label>
+      <label htmlFor={name} className={styles.label}>
+        {label}
+      </label>
       <input
         placeholder={placeholder}
         value={value}

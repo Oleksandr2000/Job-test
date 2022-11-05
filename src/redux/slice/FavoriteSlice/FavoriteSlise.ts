@@ -61,7 +61,7 @@ const FavoriteSlice = createSlice({
       .addCase(postFavorite.pending, (state) => {
         state.statusPost = "loading"
       })
-      .addCase(postFavorite.fulfilled, (state, action) => {
+      .addCase(postFavorite.fulfilled, (state) => {
         state.statusPost = "loaded"
       })
       .addCase(postFavorite.rejected, (state) => {

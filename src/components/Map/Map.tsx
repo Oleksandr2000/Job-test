@@ -8,7 +8,7 @@ function GoogleMap({ lat, lng }: MapProps) {
   return (
     <div className={styles.root}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyAjXnMd4-SM4N6a3gnJ96dtS0LISRyNKY8" }}
+        bootstrapURLKeys={{ key: String(process.env.REACT_APP_GOOGLE_MAP_KEY) }}
         center={{
           lat,
           lng,

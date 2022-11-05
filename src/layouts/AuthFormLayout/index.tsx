@@ -3,7 +3,7 @@ import React from "react"
 import { useNavigate } from "react-router"
 
 import styles from "./AuthFormLayout.module.scss"
-import { AuthFormLayoutProps, User } from "./AuthFormLayout.props"
+import { AuthFormLayoutProps } from "./AuthFormLayout.props"
 
 import Button from "../../components/Button/Button"
 import FormControl from "../../components/FormControl"

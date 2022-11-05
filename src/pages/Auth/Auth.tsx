@@ -3,7 +3,6 @@ import { useLocation } from "react-router"
 
 import styles from "./Auth.module.scss"
 
-import { useAppSelector } from "../../hooks/useContextHooks"
 import AuthFormLayout from "../../layouts/AuthFormLayout"
 import {
   AuthInitialValues,

@@ -11,7 +11,6 @@ import { postRating } from "../../redux/slice/AdverstaningSlice/AdversteningSlic
 
 function Raiting({ rating, advertisement, ...props }: RaitingProps) {
   const [ratingArray, setRatingArray] = React.useState<JSX.Element[]>([...Array(5)].fill(<></>))
-  const [ratingValue, setRatingValue] = React.useState(rating)
 
   const { user } = useAppSelector((store) => store.user)
   const newRating = useAppSelector((store) => store.adverstaning.advertisement?.rating)
@@ -19,18 +18,8 @@ function Raiting({ rating, advertisement, ...props }: RaitingProps) {
 
   const dispatch = useAppDispatch()
 
-  React.useEffect(() => {
-    uddatedRating(ratingValue)
-  }, [])
-
-  React.useEffect(() => {
-    if (newRating) {
-      uddatedRating(newRating.value)
-    }
-  }, [newRating])
-
   const uddatedRating = (current: number) => {
-    const updatedArray = ratingArray.map((rating: JSX.Element, i: number) => (
+    const updatedArray = ratingArray.map((_, i: number) => (
       <StarIcon
         className={cn(styles.star, {
           [styles.filled]: i < current,
@@ -56,12 +45,20 @@ function Raiting({ rating, advertisement, ...props }: RaitingProps) {
       advertisement,
     }
 
-    console.log(rating)
-
     if (body) {
       dispatch(postRating(body))
     }
   }
+
+  React.useEffect(() => {
+    uddatedRating(rating)
+  }, [])
+
+  React.useEffect(() => {
+    if (newRating) {
+      uddatedRating(newRating.value)
+    }
+  }, [newRating])
 
   return (
     <div {...props}>
